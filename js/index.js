@@ -43,7 +43,7 @@ const getcategoryId = async (categoryId) => {
   
        const CreatCard = document.createElement('div')
        CreatCard.innerHTML = `
-       <div class="card h-[430px] bg-base-100 shadow-xl">
+       <div class=" mx-3 card h-[430px] bg-base-100 shadow-xl">
          <figure>
            
            <div class =" pb-10 w-9/12 "> 
@@ -51,7 +51,7 @@ const getcategoryId = async (categoryId) => {
            src="${card.thumbnail}" />
             </div>
          </figure>
-         <div class = "pr-7 lg:pr-8 flex justify-end"> ${card.others.posted_date  ? card.others.posted_date  : '' } </div>
+         <div class = "pr-6 lg:pr-8 flex justify-end"> ${card.others.posted_date  ? card.others.posted_date  : '' } </div>
 
          <div class="card-body">
          <div class="flex justify-start gap-5 items-center">
