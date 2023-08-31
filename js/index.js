@@ -43,7 +43,7 @@ const getcategoryId = async (categoryId) => {
   
        const CreatCard = document.createElement('div')
        CreatCard.innerHTML = `
-       <div class=" mx-3 card h-[430px] bg-base-100 shadow-xl">
+       <div class="  card h-[430px] bg-base-100 shadow-xl">
          <figure>
            
            <div class =" pb-10 w-9/12 "> 
