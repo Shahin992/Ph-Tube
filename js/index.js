@@ -51,7 +51,7 @@ const getcategoryId = async (categoryId) => {
            src="${card.thumbnail}" />
             </div>
          </figure>
-         <div class = "pr-10 lg:pr-8 flex justify-end"> ${card.others.posted_date  ? card.others.posted_date  : '' } </div>
+         <div class = "pr-7 lg:pr-8 flex justify-end"> ${card.others.posted_date  ? card.others.posted_date  : '' } </div>
 
          <div class="card-body">
          <div class="flex justify-start gap-5 items-center">
