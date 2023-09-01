@@ -1,3 +1,5 @@
+let cardsData = [];
+
 const Category = async () => {
     const loadCategory = await fetch("https://openapi.programming-hero.com/api/videos/categories")
     const CategoryList = await loadCategory.json();
@@ -16,12 +18,12 @@ const Category = async () => {
 }
 
 
-
 const getcategoryId = async (categoryId) => {
      const response = await fetch(`https://openapi.programming-hero.com/api/videos/category/${categoryId}`);
        const data = await response.json();
+       cardsData = data.data;
+      cardContainer.innerHTML = "";
 
-       cardContainer.innerHTML = '';
 
        const getError = document.getElementById('ErrorContener')
       if (data.data.length === 0) {
@@ -39,19 +41,25 @@ const getcategoryId = async (categoryId) => {
     }
 
       data.data.forEach((card) => {
+       
         getError.innerHTML='';
   
        const CreatCard = document.createElement('div')
-       CreatCard.innerHTML = `
+       CreatCard.innerHTML =  `
        <div class="  card h-[430px] bg-base-100 shadow-xl">
-         <figure>
-           
-           <div class =" pb-10 w-9/12 "> 
-           <img class = "w-full h-[200px] pb-3 "
-           src="${card.thumbnail}" />
-            </div>
-         </figure>
-         <div class = "pr-6 lg:pr-8 flex justify-end"> ${card.others.posted_date  ? card.others.posted_date  : '' } </div>
+       <figure>
+       <div class=" relative pb-10 w-9/12">
+         <img class="w-full h-[200px] pb-3" src="${card.thumbnail}" />
+         <div class="absolute bottom-[60px] px-2 w-auto right-2 pr-6 lg:pr-8 bg-gray-700 text-white">
+           ${
+             card.others.posted_date
+               ? secondsToHourMinute(card.others.posted_date)
+               : ""
+           }
+         </div>
+       </div>
+     </figure>
+         
 
          <div class="card-body">
          <div class="flex justify-start gap-5 items-center">
@@ -86,7 +94,89 @@ const getcategoryId = async (categoryId) => {
        cardContainer.appendChild(CreatCard);
 
    })
+
+
+  
 }
+
+const sortByViewsDescending = () => {
+  cardsData.sort((a, b) => {
+    const parseViewCount = (viewCount) => {
+      const viewNumber = parseFloat(viewCount);
+      const multiplier = viewCount.includes("k") ? 1000 : 1;
+      return viewNumber * multiplier;
+    };
+    const viewsA = parseViewCount(a.others.views);
+    const viewsB = parseViewCount(b.others.views);
+    return viewsB - viewsA;
+  });
+
+  const cardContainer = document.getElementById("cardContainer");
+  cardContainer.innerHTML = "";
+  cardsData.forEach((card) => {
+    const CreatCard = document.createElement("div");
+    CreatCard.innerHTML = `
+       <div class="  card h-[430px] bg-base-100 shadow-xl">
+       <figure>
+       <div class=" relative pb-10 w-9/12">
+         <img class="w-full h-[200px] pb-3" src="${card.thumbnail}" />
+         <div class="absolute bottom-[60px] px-2 w-auto right-2 pr-6 lg:pr-8 bg-gray-700 text-white">
+           ${
+             card.others.posted_date
+               ? secondsToHourMinute(card.others.posted_date)
+               : ""
+           }
+         </div>
+       </div>
+     </figure>
+
+     <div class="card-body">
+     <div class="flex justify-start gap-5 items-center">
+     <div>
+         <div>
+           <div>
+             <img class="w-14 h-16 rounded-full"
+               src="${card.authors[0].profile_picture}"/>
+           </div>
+         </div>
+       </div>
+
+       <h2 class="card-title text-2xl font-bold">
+       ${card.title}
+       </h2>
+ </div>
+ <div class="flex">
+   
+    <div class="pb-2 flex gap-5 text-2xl font-semibold">
+      <h6>${card.authors[0].profile_name}</h6>
+      ${
+        card.authors[0].verified
+          ? '<img src="./Image/fi_10629607.svg" alt="">'
+          : ""
+      }
+    </div>
+    
+  </div>
+  <h3> Total Views: ${card.others.views ? card.others.views : ""} </h3>
+           <div class="card-footer flex justify-between mt-8">
+             
+           </div>
+         </div>
+       </div>
+       `;
+    cardContainer.appendChild(CreatCard);
+  });
+};
+
+
+const sort = document.getElementById("sort");
+sort.addEventListener("click", sortByViewsDescending);
+function secondsToHourMinute(seconds) {
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  return `${hours} hrs ${minutes} min ago`;
+}
+
 
 
 Category();
