@@ -48,7 +48,7 @@ const getcategoryId = async (categoryId) => {
        CreatCard.innerHTML =  `
        <div class="  card h-[430px] bg-base-100 shadow-xl">
        <figure>
-       <div class=" relative pb-10 w-9/12">
+       <div class=" relative pb-10 ">
          <img class="w-full h-[200px] pb-3" src="${card.thumbnail}" />
          <div class="absolute bottom-[60px] px-2 w-auto right-2 pr-6 lg:pr-8 bg-gray-700 text-white">
            ${
@@ -118,7 +118,7 @@ const sortByViewsDescending = () => {
     CreatCard.innerHTML = `
        <div class="  card h-[430px] bg-base-100 shadow-xl">
        <figure>
-       <div class=" relative pb-10 w-9/12">
+       <div class=" relative pb-10 w-full">
          <img class="w-full h-[200px] pb-3" src="${card.thumbnail}" />
          <div class="absolute bottom-[60px] px-2 w-auto right-2 pr-6 lg:pr-8 bg-gray-700 text-white">
            ${
