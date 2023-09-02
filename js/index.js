@@ -116,7 +116,7 @@ const sortByViewsDescending = () => {
   cardsData.forEach((card) => {
     const CreatCard = document.createElement("div");
     CreatCard.innerHTML = `
-       <div class=" w-[80%] lg:w-full h-[430px] bg-base-100 shadow-xl">
+       <div class="  lg:w-full h-[430px] bg-base-100 shadow-xl">
        <figure>
        <div class=" relative pb-10 w-full">
          <img class="w-full h-[200px] pb-3" src="${card.thumbnail}" />
