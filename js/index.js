@@ -10,7 +10,7 @@ const Category = async () => {
         const div = document.createElement('div');
         div.innerHTML = 
         `
-        <a onclick ="getcategoryId('${Category.category_id}')" class="tab btn lg:ml-3  lg:py-3 lg:px-8 text-xl lg:text-2xl font-semibold lg:font-bold">${Category.category}</a>
+        <a onclick ="getcategoryId('${Category.category_id}')" class="tab btn lg:ml-3 px-1 lg:py-3 lg:px-8 text-xl lg:text-2xl font-semibold lg:font-bold">${Category.category}</a>
         
         `
         categoryContainer.appendChild(div);
@@ -62,7 +62,7 @@ const getcategoryId = async (categoryId) => {
          
 
          <div class="card-body">
-         <div class="flex justify-start gap-5 items-center">
+         <div class="flex justify-start lg:gap-5 gap-3 items-center">
          <div>
              <div>
                <div>
@@ -71,7 +71,7 @@ const getcategoryId = async (categoryId) => {
                </div>
              </div>
            </div>
-         <h2 class="card-title text-2xl font-bold">
+         <h2 class="card-title lg:text-2xl text-xl font-bold">
              ${card.title}
              </h2>
        </div>
@@ -131,7 +131,7 @@ const sortByViewsDescending = () => {
      </figure>
 
      <div class="card-body">
-     <div class="flex justify-start gap-5 items-center">
+     <div class="flex justify-start lg:gap-5 gap-3 items-center">
      <div>
          <div>
            <div>
@@ -141,7 +141,7 @@ const sortByViewsDescending = () => {
          </div>
        </div>
 
-       <h2 class="card-title text-2xl font-bold">
+       <h2 class="card-title lg:text-2xl text-xl font-bold">
        ${card.title}
        </h2>
  </div>
