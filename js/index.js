@@ -10,7 +10,7 @@ const Category = async () => {
         const div = document.createElement('div');
         div.innerHTML = 
         `
-        <a onclick ="getcategoryId('${Category.category_id}')" class="tab btn ml-3  lg:py-3 lg:px-8 text-xl lg:text-2xl font-semibold lg:font-bold">${Category.category}</a>
+        <a onclick ="getcategoryId('${Category.category_id}')" class="tab btn lg:ml-3  lg:py-3 lg:px-8 text-xl lg:text-2xl font-semibold lg:font-bold">${Category.category}</a>
         
         `
         categoryContainer.appendChild(div);
@@ -46,7 +46,7 @@ const getcategoryId = async (categoryId) => {
   
        const CreatCard = document.createElement('div')
        CreatCard.innerHTML =  `
-       <div class="  card h-[430px] bg-base-100 shadow-xl">
+       <div class=" card  h-[430px] bg-base-100 shadow-xl">
        <figure>
        <div class=" relative pb-10 ">
          <img class="w-full h-[200px] pb-3" src="${card.thumbnail}" />
@@ -116,7 +116,7 @@ const sortByViewsDescending = () => {
   cardsData.forEach((card) => {
     const CreatCard = document.createElement("div");
     CreatCard.innerHTML = `
-       <div class="  card h-[430px] bg-base-100 shadow-xl">
+       <div class=" w-[80%] lg:w-full h-[430px] bg-base-100 shadow-xl">
        <figure>
        <div class=" relative pb-10 w-full">
          <img class="w-full h-[200px] pb-3" src="${card.thumbnail}" />
@@ -176,6 +176,13 @@ function secondsToHourMinute(seconds) {
   const minutes = Math.floor((seconds % 3600) / 60);
   return `${hours} hrs ${minutes} min ago`;
 }
+
+
+document.getElementById('Blogbtn').addEventListener('click',function(){
+  window.location.href = 'Blog.html';
+})
+
+
 
 
 
